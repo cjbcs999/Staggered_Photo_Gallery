@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<photos>
+    <photo file="photo1" title="Grand Canyon" />
+    <photo file="photo2" title="Yosemite" />
+    <photo file="photo3" title="Arch National Park" />
+    <photo file="photo4" title="Rocky Mountain" />
+    <photo file="photo5" title="Zion National Park" />
+    <photo file="photo6" title="Joshua Tree" />" />
+</photos>
