@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <photos>
-    <photo file="photo1" title="Grand Canyon" />
-    <photo file="photo2" title="Yosemite" />
-    <photo file="photo3" title="Arch National Park" />
-    <photo file="photo4" title="Rocky Mountain" />
-    <photo file="photo5" title="Zion National Park" />
-    <photo file="photo6" title="Joshua Tree" />" />
+    <photo>
+        <title>Grand Canyon</title>
+        <file>photo1.jpg</file>
+    </photo>
+    <photo>
+        <title>Yosemite</title>
+        <file>photo2.jpg</file>
+    </photo>
+    <photo>
+        <title>Arch National Park</title>
+        <file>photo3.jpg</file>
+    </photo>
+    <photo>
+        <title>Rocky Mountain</title>
+        <file>photo4.jpg</file>
+    </photo>
+    <photo>
+        <title>Zion National Park</title>
+        <file>photo5.webp</file>
+    </photo>
+    <photo>
+        <title>Joshua Tree</title>
+        <file>photo6.jpg</file>
+    </photo>
 </photos>

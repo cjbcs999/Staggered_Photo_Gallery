@@ -35,11 +35,24 @@ fun parsePhotosXml(context: Context): List<Photo> {
     val photos = mutableListOf<Photo>()
     val parser = context.resources.getXml(R.xml.photos)
     var eventType = parser.eventType
+
     while (eventType != XmlPullParser.END_DOCUMENT) {
         if (eventType == XmlPullParser.START_TAG && parser.name == "photo") {
-            val fileName = parser.getAttributeValue(null, "file") ?: ""
-            val title = parser.getAttributeValue(null, "title") ?: ""
-            if (fileName.isNotEmpty() && title.isNotEmpty()) {
+            var title = ""
+            var fileName = ""
+            val photoDepth = parser.depth
+
+            eventType = parser.next()
+            while (!(eventType == XmlPullParser.END_TAG && parser.name == "photo" && parser.depth == photoDepth)) {
+                if (eventType == XmlPullParser.START_TAG) {
+                    when (parser.name) {
+                        "title" -> title = parser.nextText()
+                        "file" -> fileName = parser.nextText()
+                    }
+                }
+                eventType = parser.next()
+            }
+            if (title.isNotEmpty() && fileName.isNotEmpty()) {
                 photos.add(Photo(fileName, title))
             }
         }
@@ -53,7 +66,8 @@ fun parsePhotosXml(context: Context): List<Photo> {
 fun PhotoItem(photo: Photo, modifier: Modifier = Modifier) {
     val context = LocalContext.current
     // Dynamically get image resource ID from drawable based on file name
-    val resId = context.resources.getIdentifier(photo.fileName, "drawable", context.packageName)
+    val resName = photo.fileName.substringBeforeLast(".")
+    val resId = context.resources.getIdentifier(resName, "drawable", context.packageName)
 
     // To create different heights, use the hash value of fileName to select a fixed height
     val heights = listOf(150.dp, 200.dp, 250.dp, 180.dp, 220.dp)
